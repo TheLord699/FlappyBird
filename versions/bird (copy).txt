@@ -1,0 +1,86 @@
+import pygame as pg
+import math
+import os
+
+class Bird:
+  def __init__ (self, screen_width, screen_height):
+    self.screen_width = screen_width
+    self.screen_height = screen_height
+    
+    self.x = 50
+    self.y = 50
+
+    self.vel_x = 0
+    self.vel_y = 0
+
+    self.increase_x = 5
+    self.increase_y = 15
+
+    self.max_y = 15
+
+    self.gravity = 7
+    
+    self.RADIUS = 15
+
+    self.dir = 0
+
+    self.score = 0
+
+    self.dead = False
+
+  def update(self, screen, events):
+    if not self.dead:
+      self.rotation_matrix()
+      self.render(screen)
+      self.apply_gravity()
+    self.handle_events(events)
+    self.death()
+    #self.restart()
+
+  def render(self, screen):
+    pg.draw.circle(screen, (100, 100, 0), (int(self.x), int(self.y)), self.RADIUS)
+
+  def restart(self):
+    self.x = 50
+    self.y = 50
+
+    self.vel_x = 0
+    self.vel_y = 0
+
+    self.dir = 0
+
+    self.score = 0
+
+    self.dead = False
+
+  def handle_events(self, events):
+    for event in events:
+      if event.type == pg.MOUSEBUTTONDOWN:
+        if event.button == 1:
+          if not self.dead:
+            self.flap()
+
+          else:
+            self.restart()
+
+  def flap(self):
+    self.vel_y += self.increase_y
+
+  def apply_gravity(self):
+    self.y += self.gravity - self.vel_y
+
+    if self.vel_y > 0:
+      self.vel_y -= 1
+
+    if self.vel_y < 1:
+      self.vel_y = 0
+
+    if self.vel_y >= self.max_y:
+      self.vel_y = self.max_y
+
+  def rotation_matrix(self):
+    pass
+
+  def death(self):
+    if self.y > 600: # Test
+      self.dead = True

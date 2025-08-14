@@ -1,0 +1,18 @@
+{
+    "cSpell.words": [
+        "blit",
+        "gameover",
+        "MOUSEBUTTONDOWN",
+        "VIDEORESIZE"
+    ],
+    "cSpell.ignoreWords": [
+        "DOUBLEBUF",
+        "Finion",
+        "KEYDOWN",
+        "KEYUP",
+        "Paralax",
+        "colliderect",
+        "fappy",
+        "topleft"
+    ]
+}

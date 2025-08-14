@@ -1,0 +1,33 @@
+
+  def render(self, screen):
+      if self.get_frames_count(self.skin_selected) > 1:
+          self.bird_image = pg.image.load(f"assets/sprites/player/{self.skin_selected}/{self.skin_selected}{int(self.frame)}.png").convert_alpha()
+      else:
+          self.bird_image = pg.image.load(f"assets/sprites/player/{self.skin_selected}/{self.skin_selected}.png").convert_alpha()
+
+      self.bird_mask = pg.mask.from_surface(self.bird_image)
+
+      # Rotate the bird image
+      rotated_bird = pg.transform.rotate(self.bird_image, self.angle)
+      rotated_rect = rotated_bird.get_rect(center=(int(self.x + 40), int(self.y + 35)))
+
+      screen.blit(rotated_bird, rotated_rect.topleft)
+
+  def rotate_image(self, image, angle):
+      # Convert image to numpy array
+      image_array = pg.surfarray.array3d(image)
+
+      # Calculate the number of rotations required
+      num_rotations = int(angle / 90)
+
+      # Perform the rotations
+      rotated_image_array = np.rot90(image_array, k=num_rotations)
+
+      # Flip the image if needed
+      if num_rotations % 2 != 0:
+          rotated_image_array = np.transpose(rotated_image_array, axes=(1, 0, 2))
+
+      # Convert back to surface
+      rotated_image = pg.surfarray.make_surface(rotated_image_array)
+
+      return rotated_image

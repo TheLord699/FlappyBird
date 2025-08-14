@@ -1,0 +1,43 @@
+import pygame as pg
+from bird import Bird
+import random
+
+class Pipes:
+  def __init__(self, screen_width, screen_height):
+    self.bird = Bird(None, None)
+    
+    self.screen_width = screen_width
+    self.screen_height = screen_height
+    
+    self.x = self.screen_width
+    self.y = random.randint(50, self.screen_height - 150)
+    
+    self.speed = 5
+    self.pipe_width = 50  
+    self.gap = 150  
+
+    timer = pg.time.Clock()
+    
+    self.spawn()
+
+  def update(self, screen):
+    self.render(screen)
+    self.move()
+
+  def render(self, screen):
+    pg.draw.rect(screen, (100, 100, 0), (self.x, 0, self.pipe_width, self.y))
+
+    pg.draw.rect(screen, (100, 100, 0), (self.x, self.y + self.gap, self.pipe_width, self.screen_height - self.y - self.gap))
+
+  def spawn(self):
+    self.x = self.screen_width  
+    self.y = random.randint(50, self.screen_height - 150)  
+
+  def move(self):
+    if not self.bird.dead:
+      self.x -= self.speed
+      if self.x < -self.pipe_width:  
+        self.spawn()
+
+  def timed_spawn(self):
+    pass
