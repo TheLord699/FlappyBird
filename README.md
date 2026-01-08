@@ -1,7 +1,20 @@
-FlappyBird game made in python, made it ages ago but never created a repo
+# Flappy Bird Clone
 
-Its normal flappy bird with some different physics as I dont like the original physics though you can change 
-some values to recreate, I also added a feature that lets you import images or a group of images, group makes it an animation 
-and single image is... well just a single image.
+![Game Thumbnail](thumbnail.png)
 
-I also practiced defining types for everything in this project, though I havent stuck to doing this with my other projects as its a lengthy process
+A Python implementation of Flappy Bird with customizable physics and image support.
+
+## Features
+
+- **Custom Physics**: Modified from the original Flappy Bird physics (easily configurable to match original values)
+- **Flexible Image System**:
+  - Import single images for static sprites
+  - Import multiple images for animated sprites
+  - Automatic animation handling for image groups
+- **Full Type Hints**: Practiced comprehensive type annotations throughout the project
+
+## About
+
+I developed this Flappy Bird clone some time ago but never published it. The physics are tweaked from the original game to feel better (in my opinion), though all values are adjustable if you prefer the original mechanics.
+
+This project was also my exploration into Python type hinting - every function and variable has type annotations, though I haven't maintained this practice in other projects due to the time investment.
