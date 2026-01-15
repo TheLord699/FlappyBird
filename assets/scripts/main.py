@@ -23,7 +23,7 @@ class FlappyBirdGame:
   
 		icon: pg.Surface = pg.image.load("assets/sprites/player/yellow/yellow1.png")
 
-		self.screen: pg.Surface = pg.display.set_mode((self.screen_width, self.screen_height), pg.DOUBLEBUF | pg.SCALED)
+		self.screen: pg.Surface = pg.display.set_mode((self.screen_width, self.screen_height), pg.DOUBLEBUF | pg.SCALED | pg.RESIZABLE)
 
 		pg.display.set_caption("FlappyBird " + self.version)
 		pg.display.set_icon(icon)
